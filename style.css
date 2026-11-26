@@ -1,0 +1,52 @@
+:root { --paper:#fbf4f1; --ink:#44242b; --accent:#8b3749; --on-accent:#fff6f4; --band:#f3e1e6; --line:#b58391; --display:Georgia,serif; }
+
+* { box-sizing: border-box; }
+:root { color-scheme: light; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 system-ui, sans-serif; }
+a { color: inherit; }
+img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+h1,h2,h3,p,figure { margin: 0; }
+h1,h2 { font-family: var(--display); font-weight: var(--weight, 500); line-height: .99; letter-spacing: -.045em; text-wrap: balance; }
+h1 { font-size: clamp(3rem, 7vw, 7rem); }
+h2 { font-size: clamp(2.7rem, 5vw, 5rem); }
+h3 { font-size: 1.16rem; line-height: 1.3; }
+p { max-inline-size: 47ch; }
+.wrap { inline-size: min(100% - 2 * clamp(1.25rem, 5vw, 5rem), 82rem); margin-inline: auto; }
+.skip { position: fixed; z-index: 4; inset: 1rem auto auto 1rem; transform: translateY(-200%); background: var(--ink); color: var(--paper); padding: .75rem; }
+.skip:focus { transform: none; }
+:focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+.header { border-block-end: 1px solid var(--line); }
+.header .wrap, .footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem 2rem; }
+.header .wrap { min-block-size: 4.5rem; }
+.brand { font-size: 1.3rem; letter-spacing: -.05em; font-weight: 750; text-decoration: none; }
+.header a, .footer a { min-block-size: 44px; display: inline-flex; align-items: center; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; min-block-size: calc(100svh - 4.5rem); padding-block: clamp(2.5rem, 5vw, 5rem); }
+.copy { display: grid; gap: 1.5rem; justify-items: start; }
+.copy > p:not(.category) { font-size: 1.125rem; }
+.category { color: var(--ink); font-weight: 700; }
+.action { display: inline-flex; align-items: center; justify-content: center; min-block-size: 48px; padding: .65rem 1.25rem; background: var(--accent); color: var(--on-accent); font: inherit; font-weight: 700; text-decoration: none; border: 0; border-radius: var(--corner, 0); cursor: pointer; transition: transform 160ms ease; }
+.action:hover { transform: translateY(-2px); }
+.action:active { transform: translateY(1px); }
+.media { aspect-ratio: 5 / 4; overflow: clip; background: var(--band); }
+.media img { transition: transform 350ms ease; }
+.media:hover img { transform: scale(1.025); }
+.details { background: var(--band); padding-block: clamp(4rem, 8vw, 8rem); }
+.details h2 { margin-block-end: 1.2rem; }
+.studies { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); margin-block-start: 2.75rem; }
+.studies:has(> ul:only-child) { grid-template-columns: minmax(0, 1fr); }
+.items { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
+.items li { padding-block: 1.15rem; border-block-end: 1px solid var(--line); }
+.items p { margin-block-start: .35rem; }
+.footer { padding-block: 1.5rem; font-size: .9rem; }
+.credits { margin-block-start: .7rem; display: flex; align-items: center; flex-wrap: wrap; gap: .25rem .6rem; }
+[data-enter] { animation: enter 520ms ease-out both; }
+@keyframes enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (max-width: 45rem) {
+ .hero .wrap,.studies { grid-template-columns: minmax(0, 1fr); }
+ .hero .wrap { min-block-size: auto; align-content: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+ *,*::before,*::after { animation: none !important; transition: none !important; }
+}
+
+.hero .wrap { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } .hero .media { grid-column: 1; grid-row: 1; aspect-ratio: 4 / 4.6; max-block-size: 75vh; } .hero .copy { grid-column: 2; } .details .media { border-radius: 48% 48% 0 0; } @media (max-width:45rem) { .hero .wrap { grid-template-columns:minmax(0,1fr); } .hero .media,.hero .copy { grid-column:auto; grid-row:auto; } }
